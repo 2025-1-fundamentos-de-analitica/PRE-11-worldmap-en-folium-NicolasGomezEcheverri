@@ -42,6 +42,7 @@ def add_countries_column(affiliations):
     )
     affiliations["countries"] = affiliations["countries"].map(set)
     affiliations["countries"] = affiliations["countries"].str.join(", ")
+
     return affiliations
 
 
@@ -66,6 +67,7 @@ def count_country_frequency(affiliations):
 
 def plot_world_map(countries):
     """Grafica un mapa mundial con la frecuencia de cada país."""
+
     countries = countries.copy()
     countries = countries.to_frame()
     countries = countries.reset_index()
@@ -96,7 +98,7 @@ def make_worldmap():
     affiliations = add_countries_column(affiliations)
     affiliations = clean_countries(affiliations)
     countries = count_country_frequency(affiliations)
-    countries.to_csv("files/counttries.csv")
+    countries.to_csv("files/countries.csv")
     plot_world_map(countries)
 
 
@@ -107,4 +109,8 @@ def make_worldmap():
 
 
 if __name__ == "__main__":
-      make_worldmap()
+    make_worldmap()
+    
+    
+    
+    
